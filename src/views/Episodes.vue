@@ -9,37 +9,46 @@
 
 <script>
 import { request as fetchGQL } from "graphql-request"; 
-import { ref } from "vue";
+import { inject, ref, watchEffect } from "vue";
+import { useRoute } from 'vue-router';
+
 export default {
 
 name: 'Episodes',
 
 	setup() {
 		let episodes = ref([]);
+		const info = inject("info");
+		const route = useRoute();
 
-		fetchGQL(
-			"https://rickandmortyapi.com/graphql",
-			`query {
-				episodes {
-					info {
-						count
-						pages
-						next
-						prev
-					}
-					results {
-						id
-						name
-						air_date
-						episode
-						created
+		watchEffect(() => {
+			fetchGQL(
+				"https://rickandmortyapi.com/graphql",
+				`query($page: Int) {
+					episodes(page: $page) {
+						info {
+							count
+							pages
+							next
+							prev
+						}
+						results {
+							id
+							name
+							air_date
+							episode
+							created
+						}
 					}
 				}
-			}
-			`
-			).then((data) => {
-				episodes.value = data.episodes.results;
-			});
+				`,{
+					page: parseInt(route.params.page),
+				}
+				).then((data) => {
+					episodes.value = data.episodes.results;
+					info.value = data.episodes.info;
+				});
+			})
 
 			return {
 				episodes,
