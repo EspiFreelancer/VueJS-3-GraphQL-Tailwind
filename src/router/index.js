@@ -9,13 +9,13 @@ const routes = [
       import(/*webpackChunkName: "episodes*/ '../views/Episodes.vue')
   },
   {
-    path: '/locations',
+    path: '/locations/:page?',
     name: 'Locations',
     component: () => 
       import(/*webpackChunkName: "locations*/ '../views/Locations.vue')
   },
   {
-    path: '/characters',
+    path: '/characters/:page?',
     name: 'Characters',
     component: () => 
       import(/*webpackChunkName: "characters*/ '../views/Characters.vue')
