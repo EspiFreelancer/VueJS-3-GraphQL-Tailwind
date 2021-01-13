@@ -1,6 +1,6 @@
 <template>
 	<h1>Characters</h1>
-	<ul>
+	<ul class="data-list">
 		<li v-for="character in characters" :key="character.id">
 			<img :src="character.image" :alt="character.name" />
 			{{ character.name }}

@@ -1,6 +1,6 @@
 <template>
 	<h1>Episodes</h1>
-	<ul>
+	<ul class="data-list">
 		<li v-for="episode in episodes" :key="episode.id">
 			{{ episode.name }}
 		</li>

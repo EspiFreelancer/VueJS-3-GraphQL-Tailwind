@@ -1,6 +1,6 @@
 <template>
 	<h1>Locations</h1>
-	<ul>
+	<ul class="data-list">
 		<li v-for="location in locations" :key="location.id">
 			{{ location.name }}
 		</li>

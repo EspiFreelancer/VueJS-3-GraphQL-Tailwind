@@ -5,11 +5,13 @@
     <router-link to="/characters">Characters</router-link>
   </div>
   <router-view/>
+
+
   <hr>
-  {{ info }}
-  <hr>
-  <router-link :to="prevComp">Prev</router-link> |
-  <router-link :to="nextComp">Next</router-link>
+  <nav>
+    <router-link :to="prevComp">Prev</router-link>
+    <router-link :to="nextComp">Next</router-link>
+  </nav>
 </template>
 
 <script setup> 
